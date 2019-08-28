@@ -18,13 +18,15 @@ const about_content = (
         target="_blank"
         rel="noopener noreferrer"
       >
-        is a
+        {" "}
+        is a{" "}
       </a>
       <a
         href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this"
         target="_blank"
         rel="noopener noreferrer"
       >
+        {" "}
         stumbling block{" "}
       </a>
       <a
@@ -32,6 +34,7 @@ const about_content = (
         target="_blank"
         rel="noopener noreferrer"
       >
+        {" "}
         for many{" "}
       </a>
       <a
@@ -41,17 +44,16 @@ const about_content = (
       >
         {" "}
         javascript beginners{" "}
-      </a>{" "}
+      </a>
       would be an understatement.
     </p>
 
     <p>
       {" "}
       This page will not go into a detailed explanation of the inner workings of
-      the
-      <code>this</code> keyword. There's plenty of those to be found online (I
-      list some references at the bottom). Instead, I will try to give a short
-      explanation with every code example of what exactly is happening.
+      the <code>this</code> keyword. There's plenty of those to be found online
+      (I list some references at the bottom). Instead, I will try to give a
+      short explanation with every code example of what exactly is happening.
     </p>
 
     <p>
@@ -61,6 +63,7 @@ const about_content = (
         target="_blank"
         rel="noopener noreferrer"
       >
+        {" "}
         Syntax podcast
       </a>{" "}
       on javascript fundamentals. I highly recommend the podcast to anyone
