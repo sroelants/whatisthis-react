@@ -2,15 +2,9 @@ import React from "react";
 import Button from "./Button";
 import "./ButtonPanel.sass";
 
-const ButtonPanel = () => {
-  return (
-    <div className="button-panel">
-      <Button label="window" />
-      <Button label="person" />
-      <Button label="Person" />
-      <Button label="person2" />
-    </div>
-  );
+const ButtonPanel = ({ options }) => {
+  const buttons = options.map((l, i) => <Button label={l} key={i} />);
+  return <div className="button-panel">{buttons}</div>;
 };
 
 export default ButtonPanel;

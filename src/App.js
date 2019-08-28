@@ -43,7 +43,7 @@ class App extends React.Component {
         </header>
         <main>
           <CodeField content={this.state.question.codesnippet} />
-          <ButtonPanel />
+          <ButtonPanel options={this.state.question.options} />
         </main>
         <footer>
           <button className="footer__about" onClick={this.openAbout}>
