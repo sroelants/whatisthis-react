@@ -2,6 +2,7 @@ import React from "react";
 import CodeField from "./CodeField";
 import ButtonPanel from "./ButtonPanel";
 import Modal from "./Modal";
+import questions from "./questions";
 import "./App.sass";
 
 const snippet = `'use strict';
@@ -15,7 +16,11 @@ const snippet = `'use strict';
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { view: "about" };
+    this.state = {
+      view: "about",
+      question: questions[Math.floor(Math.random() * questions.length)]
+    };
+
     this.openAbout = this.openAbout.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -37,7 +42,7 @@ class App extends React.Component {
           {"?"}
         </header>
         <main>
-          <CodeField content={snippet} />
+          <CodeField content={this.state.question.codesnippet} />
           <ButtonPanel />
         </main>
         <footer>
