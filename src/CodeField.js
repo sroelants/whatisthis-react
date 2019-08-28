@@ -1,6 +1,7 @@
 import React from "react";
 import Prism from "prismjs";
 import "./prism-monokai.css";
+import "./CodeField.sass";
 
 class CodeField extends React.Component {
   constructor(props) {
