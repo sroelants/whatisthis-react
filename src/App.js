@@ -3,7 +3,6 @@ import CodeField from "./CodeField";
 import ButtonPanel from "./ButtonPanel";
 import Modal from "./Modal";
 import "./App.sass";
-import about_content from "./content.js";
 
 const snippet = `'use strict';
 
@@ -17,6 +16,11 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = { view: "about" };
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  closeModal() {
+    this.setState({ view: "main" });
   }
 
   render() {
@@ -36,7 +40,9 @@ class App extends React.Component {
             {"No, seriously, what is this?"}
           </a>
         </footer>
-        {this.state.view === "about" && <Modal content={about_content} />}
+        {this.state.view !== "main" && (
+          <Modal content={this.state.view} closeHandler={this.closeModal} />
+        )}
       </div>
     );
   }
