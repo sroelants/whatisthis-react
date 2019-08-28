@@ -17,7 +17,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      view: "about",
+      view: "main",
       question: questions[Math.floor(Math.random() * questions.length)]
     };
 
