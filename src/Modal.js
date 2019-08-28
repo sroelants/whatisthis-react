@@ -1,12 +1,10 @@
 import React from "react";
 import "./Modal.sass";
-import about_content from "./content.js";
 
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-    this.view = props.content;
-    this.content = props.content === "about" ? about_content : "";
+    this.content = props.content;
     this.closeModal = props.closeHandler;
   }
 
