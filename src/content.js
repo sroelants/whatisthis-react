@@ -108,4 +108,7 @@ const about_content = (
     </dl>
   </div>
 );
-export default about_content;
+
+const correct_content = "Correct content";
+const incorrect_content = "Incorrect content";
+export {about_content, correct_content, incorrect_content};

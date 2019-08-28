@@ -3,6 +3,7 @@ import CodeField from "./CodeField";
 import ButtonPanel from "./ButtonPanel";
 import Modal from "./Modal";
 import questions from "./questions";
+import { about_content, correct_content, incorrect_content } from "./content";
 import "./App.sass";
 
 const snippet = `'use strict';
@@ -23,6 +24,7 @@ class App extends React.Component {
 
     this.openAbout = this.openAbout.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.checkAnswer = this.checkAnswer.bind(this);
   }
 
   closeModal() {
@@ -31,6 +33,14 @@ class App extends React.Component {
 
   openAbout() {
     this.setState({ view: "about" });
+  }
+
+  checkAnswer(str) {
+    if (str === this.state.question.correct) {
+      return () => this.setState({ view: "correct" });
+    } else {
+      return () => this.setState({ view: "incorrect" });
+    }
   }
 
   render() {
@@ -43,15 +53,24 @@ class App extends React.Component {
         </header>
         <main>
           <CodeField content={this.state.question.codesnippet} />
-          <ButtonPanel options={this.state.question.options} />
+          <ButtonPanel
+            options={this.state.question.options}
+            answerHandler={this.checkAnswer}
+          />
         </main>
         <footer>
           <button className="footer__about" onClick={this.openAbout}>
             {"No, seriously, what is this?"}
           </button>
         </footer>
-        {this.state.view !== "main" && (
-          <Modal content={this.state.view} closeHandler={this.closeModal} />
+        {this.state.view === "about" && (
+          <Modal content={about_content} closeHandler={this.closeModal} />
+        )}
+        {this.state.view === "correct" && (
+          <Modal content={correct_content} closeHandler={this.closeModal} />
+        )}
+        {this.state.view === "incorrect" && (
+          <Modal content={incorrect_content} closeHandler={this.closeModal} />
         )}
       </div>
     );
