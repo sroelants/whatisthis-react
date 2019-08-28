@@ -1,0 +1,112 @@
+@import './common.sass'
+
+.mask
+  background-color: rgba(0, 0, 0, 0.7)
+  position: fixed
+  width: 100vw
+  height: 100vh
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  z-index: 10
+
+
+.modal__button
+  justify-content: space-between
+
+.modal__button__helper-icon
+  font-size: 2em
+  width: 1em
+
+.modal__button__text
+  font-size: 1em
+  text-align: center
+  width: 100%
+
+h1
+  font-family: $titlefont
+  text-shadow: 1px 1px 1px lighten($color4, 30%)
+  font-size: 2em
+  font-weight: 700
+
+
+.modal
+  overflow: auto
+  border-radius: 3px
+  padding-top: 30px
+  padding-left: 60px
+  padding-right: 60px
+  padding-bottom: 30px
+  z-index: 20
+  background-color: $color3
+  min-height: 20vh
+  width: $cardwidth
+  position: fixed
+  transition: all 0.5s ease-out
+  line-height: 1.3
+
+  color: $color4
+  -webkit-box-shadow: 14px 17px 44px -18px rgba(0,0,0,0.9)
+  -moz-box-shadow: 14px 17px 44px -18px rgba(0,0,0,0.9)
+  box-shadow: 14px 17px 44px -18px rgba(0,0,0,0.9)
+  a
+    text-decoration: none
+    color: $color2
+  p
+    text-align: justify
+
+  @media (max-width: 1024px)
+    width: $mediumcardwidth
+    width: $narrowcardwidth
+  @media (max-width: 768px)
+    max-height: 95%
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+  @media (min-width: 768px)
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+
+  .modal__options
+    margin-top: 2em
+    margin-bottom: 2em
+    width: 100%
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    align-content: space-between
+    button
+      color: $color3
+
+
+dt
+  margin-top: 5px
+  margin-bottom: 5px
+
+.modal__close
+  font-size: 1.5em
+  border: none 
+  background-color: inherit
+  color: inherit
+  cursor: pointer
+  position: absolute
+  color: $color4
+  opacity: 0.4
+  font-weight: 700
+  top: 0.5em
+  right: 0.5em
+  &:hover
+    cursor: pointer
+    opacity: 0.6
+  &:active
+    border: none
+    opacity: 0.8
+    transform: translatey(2px)
+  &:focus
+    border: none
+    outline: none
+
+
