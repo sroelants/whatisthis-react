@@ -16,11 +16,16 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = { view: "about" };
+    this.openAbout = this.openAbout.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
   closeModal() {
     this.setState({ view: "main" });
+  }
+
+  openAbout() {
+    this.setState({ view: "about" });
   }
 
   render() {
@@ -36,9 +41,9 @@ class App extends React.Component {
           <ButtonPanel />
         </main>
         <footer>
-          <a href="#" id="footer__about">
+          <button className="footer__about" onClick={this.openAbout}>
             {"No, seriously, what is this?"}
-          </a>
+          </button>
         </footer>
         {this.state.view !== "main" && (
           <Modal content={this.state.view} closeHandler={this.closeModal} />

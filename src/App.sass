@@ -59,11 +59,21 @@ footer
   text-align: center
   width: 100vw
   font-size: 0.85em
-  a
+  .footer__about
+    border: none 
+    background-color: inherit
+    color: inherit
+    cursor: pointer
     display: inline-block
     text-decoration: none
     color: $color3
     &:hover
-      transform: translatey(-1px)
+      cursor: pointer
+      opacity: 0.8
     &:active
-      transform: translatey(1px)
+      border: none
+      opacity: 0.8
+      transform: translatey(2px)
+    &:focus
+      border: none
+      outline: none
