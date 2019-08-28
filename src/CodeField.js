@@ -17,7 +17,7 @@ class CodeField extends React.Component {
     return (
       <div className="codesnippet">
         <pre className="lang-js">
-          <code class="lang-js codesnippet__content">{this.content}</code>
+          <code className="lang-js codesnippet__content">{this.content}</code>
         </pre>
       </div>
     );
