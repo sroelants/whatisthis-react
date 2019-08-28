@@ -1,0 +1,39 @@
+@import './common.sass'
+
+button 
+  position: relative
+  color: $color3
+  height: 3em
+  display: flex
+  align-items: center
+  justify-content: center
+  font: inherit
+  color: inherit
+  cursor: pointer
+  background-color: $bg-button
+  width: 48%
+  margin-top: 0.5em
+  margin-bottom: 0.5em
+  font-size: 1.2em
+  font-family: $codefont
+  font-weight: 700
+  border-radius: 0.3em
+  border: none 
+  -webkit-box-shadow: 14px 17px 44px -18px rgba(0,0,0,0.3)
+  -moz-box-shadow: 14px 17px 44px -18px rgba(0,0,0,0.3)
+  box-shadow: 14px 17px 44px -18px rgba(0,0,0,0.3)
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease
+  &:focus
+    border: none
+    outline: none
+  &:hover
+    background-color: lighten($bg-button, 5%)
+    border: none 
+  &:active
+    transform: translate(0px, 2px) 
+    background-color: darken($bg-button, 5%)
+    border: none 
+  @media (max-width: 768px)
+    font-size: 1em

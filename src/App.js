@@ -1,6 +1,14 @@
 import React from "react";
 import CodeField from "./CodeField";
+import ButtonPanel from "./ButtonPanel";
 import "./App.sass";
+const snippet = `'use strict';
+
+    function fun(a, b) {
+    return a + b;
+    }
+    console.log(this);
+    `;
 
 function App() {
   return (
@@ -11,7 +19,8 @@ function App() {
         {"?"}
       </header>
       <main>
-        <CodeField content="let str = &quot;this is a js string&quot;" />
+        <CodeField content={snippet} />
+        <ButtonPanel />
       </main>
     </div>
   );
