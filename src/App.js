@@ -6,14 +6,6 @@ import questions from "./questions";
 import { about_content, correct_content, incorrect_content } from "./content";
 import "./App.sass";
 
-const snippet = `'use strict';
-
-    function fun(a, b) {
-    return a + b;
-    }
-    console.log(this);
-    `;
-
 class App extends React.Component {
   constructor() {
     super();
