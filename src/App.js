@@ -5,7 +5,9 @@ function App() {
   return (
     <div className="App">
       <header>
-        What is <span class="this"> this</span>?
+        {"What is "}
+        <span className="this">{"this"}</span>
+        {"?"}
       </header>
       <main />
     </div>
