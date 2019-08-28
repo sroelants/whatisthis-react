@@ -1,0 +1,69 @@
+@import './common.sass'
+
+header, footer, main
+  text-align: center
+
+.container
+  min-height: 100vh
+header
+  font-family: $titlefont
+  text-shadow: 2px 4px 1px darken($color1, 15%)
+  font-size: 4em
+  font-weight: 700
+  color: $fg-string
+  min-height: 25vh
+  display: flex
+  align-items: center
+  justify-content: center
+  @media (max-width: 768px)
+    min-height: 20vh
+    padding-top: 5vh 
+    padding-bottom: 5vh 
+  @media (max-width: 400px)
+    min-height: 10vh
+    padding-top: 8vh 
+    padding-bottom: 2vh 
+
+.this
+  font-weight: 400
+  font-size: 0.9em
+  text-shadow: none
+  font-family: $codefont
+  color: $kw-color
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  margin-bottom: -0.3em
+  margin-left: 0.3em
+  margin-right: 0.3em
+  
+main
+  min-height: 65vh
+  margin: auto
+  width: $width
+  @media (max-width: 1024px)
+    width: $mediumwidth
+  @media (max-width: 768px)
+    min-height: 75vh
+    width: $narrowwidth
+  @media (max-width: 400px)
+    padding-top: 10%
+    min-height: 85vh
+
+footer
+  display: flex
+  align-items: flex-end
+  justify-content: center
+  min-height: 10vh 
+  // padding-top: 0.8em
+  padding-bottom: 2em
+  text-align: center
+  width: 100vw
+  font-size: 0.85em
+  a
+    display: inline-block
+    text-decoration: none
+    color: $color3
+    &:hover
+      transform: translatey(-1px)
+    &:active
+      transform: translatey(1px)
