@@ -17,6 +17,8 @@ class App extends React.Component {
     this.openAbout = this.openAbout.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
+    this.showExplanation = this.checkAnswer.bind(this);
+    this.getModal = this.getModal.bind(this);
   }
 
   closeModal() {
@@ -33,6 +35,48 @@ class App extends React.Component {
     } else {
       return () => this.setState({ view: "incorrect" });
     }
+  }
+
+  showExplanation() {
+    this.setState({ view: "explanation" });
+  }
+
+  getModal() {
+    if (this.state.view === "correct") {
+      return (
+        <Modal
+          type="answer"
+          content={correct_content}
+          closeHandler={this.closeModal}
+          explanationHandler={this.showExplanation}
+        />
+      );
+    } else if (this.state.view === "incorrect") {
+      return (
+        <Modal
+          type="answer"
+          content={incorrect_content}
+          closeHandler={this.closeModal}
+        />
+      );
+    } else if (this.state.view === "about") {
+      return (
+        <Modal
+          type="about"
+          content={about_content}
+          closeHandler={this.closeModal}
+        />
+      );
+    } else if (this.state.view === "explanation") {
+      return (
+        <Modal
+          type="explanation"
+          content={this.state.question.explanation}
+          closeHandler={this.closeModal}
+        />
+      );
+    }
+    return null;
   }
 
   render() {
@@ -55,15 +99,7 @@ class App extends React.Component {
             {"No, seriously, what is this?"}
           </button>
         </footer>
-        {this.state.view === "about" && (
-          <Modal content={about_content} closeHandler={this.closeModal} />
-        )}
-        {this.state.view === "correct" && (
-          <Modal content={correct_content} closeHandler={this.closeModal} />
-        )}
-        {this.state.view === "incorrect" && (
-          <Modal content={incorrect_content} closeHandler={this.closeModal} />
-        )}
+        {this.getModal()}
       </div>
     );
   }
