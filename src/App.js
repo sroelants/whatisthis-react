@@ -42,39 +42,43 @@ class App extends React.Component {
   }
 
   getModal() {
-    if (this.state.view === "correct") {
-      return (
-        <Modal
-          type="answer"
-          content={correct_content}
-          closeHandler={this.closeModal}
-          explanationHandler={this.showExplanation}
-        />
-      );
-    } else if (this.state.view === "incorrect") {
-      return (
-        <Modal
-          type="answer"
-          content={incorrect_content}
-          closeHandler={this.closeModal}
-        />
-      );
-    } else if (this.state.view === "about") {
-      return (
-        <Modal
-          type="about"
-          content={about_content}
-          closeHandler={this.closeModal}
-        />
-      );
-    } else if (this.state.view === "explanation") {
-      return (
-        <Modal
-          type="explanation"
-          content={this.state.question.explanation}
-          closeHandler={this.closeModal}
-        />
-      );
+    switch (this.state.view) {
+      case "correct":
+        return (
+          <Modal
+            type="answer"
+            content={correct_content}
+            closeHandler={this.closeModal}
+            explanationHandler={this.showExplanation}
+          />
+        );
+      case "incorrect":
+        return (
+          <Modal
+            type="answer"
+            content={incorrect_content}
+            closeHandler={this.closeModal}
+            explanationHandler={this.showExplanation}
+          />
+        );
+      case "about":
+        return (
+          <Modal
+            type="about"
+            content={about_content}
+            closeHandler={this.closeModal}
+          />
+        );
+      case "explanation":
+        return (
+          <Modal
+            type="explanation"
+            content={this.state.question.explanation}
+            closeHandler={this.closeModal}
+          />
+        );
+      default:
+        return null;
     }
     return null;
   }
