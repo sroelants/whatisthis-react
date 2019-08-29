@@ -1,5 +1,4 @@
 import React from "react";
-import ModalButton from "./ModalButton";
 
 const about_content = (
   <div>
