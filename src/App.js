@@ -80,7 +80,6 @@ class App extends React.Component {
       default:
         return null;
     }
-    return null;
   }
 
   render() {
