@@ -1,4 +1,5 @@
 import React from "react";
+import ModalButton from "./ModalButton";
 
 const about_content = (
   <div>
@@ -113,16 +114,6 @@ const correct_content = (
   <div>
     <h1>Correct!</h1>
     <p>You seem to be getting a hang of it. Or was it just a fluke?</p>
-    <div class="card__options">
-      <button class="card__button explanation">
-        <div class="material-icons card__button__helper-icon">help_outline</div>
-        <span class="card__button__text">I don't get it.</span>
-      </button>
-      <button class="card__button next">
-        <div class="material-icons card__button__helper-icon">autorenew</div>
-        <span class="card__button__text">Give me another one!</span>
-      </button>
-    </div>
   </div>
 );
 
@@ -130,16 +121,6 @@ const incorrect_content = (
   <div>
     <h1>Wrong!</h1>
     <p> Looks like you're still unclear about some things.</p>
-    <div class="card__options">
-      <button class="card__button explanation">
-        <div class="material-icons card__button__helper-icon">help_outline</div>
-        <span class="card__button__text">I don't get it.</span>
-      </button>
-      <button class="card__button next">
-        <div class="material-icons card__button__helper-icon">autorenew</div>
-        <span class="card__button__text">Give me another one!</span>
-      </button>
-    </div>
   </div>
 );
 
