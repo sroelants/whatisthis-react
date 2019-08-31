@@ -11,7 +11,7 @@ class App extends React.Component {
     super();
     this.state = {
       view: "main",
-      question: questions[Math.floor(Math.random() * questions.length)]
+      question: this.getQuestion()
     };
 
     this.openAbout = this.openAbout.bind(this);
@@ -19,6 +19,9 @@ class App extends React.Component {
     this.checkAnswer = this.checkAnswer.bind(this);
     this.showExplanation = this.checkAnswer.bind(this);
     this.getModal = this.getModal.bind(this);
+
+  getQuestion() {
+    return questions[Math.floor(Math.random() * questions.length)];
   }
 
   closeModal() {
