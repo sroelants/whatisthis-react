@@ -48,11 +48,12 @@ class App extends React.Component {
   }
 
   nextQuestion() {
-    this.setState({ question: this.getQuestion(), view: "main" });
+    let question = this.getQuestion();
+    this.setState({ question: question, view: "main" });
   }
 
-  getModal(view) {
-    switch (view) {
+  getModal() {
+    switch (this.state.view) {
       case "correct":
         return (
           <Modal
@@ -115,7 +116,7 @@ class App extends React.Component {
             {"No, seriously, what is this?"}
           </button>
         </footer>
-        {this.getModal(this.state.view)}
+        {this.getModal()}
       </div>
     );
   }

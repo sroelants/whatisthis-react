@@ -154,19 +154,19 @@ printEmotionalState("meh.")
   },
   {
     codesnippet: `
-    'use strict';
-    function Simpson(name) {
-      this.name = "Lisa";
-    }
+'use strict';
+function Simpson(name) {
+  this.name = "Lisa";
+}
 
-    function Flanders(name) {
-      this.name = name;
-      return {name: "Todd"};
-    }
-    let bart = new Simpson("Bart");
-    let rod = new Flanders("Rod");
-    console.log(bart.name + " and " + rod.name); // What is printed?
-    `,
+function Flanders(name) {
+  this.name = name;
+  return {name: "Todd"};
+}
+let bart = new Simpson("Bart");
+let rod = new Flanders("Rod");
+console.log(bart.name + " and " + rod.name); // What is printed?
+`,
     options: ["Bart and Rod", "Lisa and Todd", "Lisa and Rod", "Bart and Todd"],
     correct: "Lisa and Todd",
     explanation: (
