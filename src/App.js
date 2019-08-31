@@ -17,8 +17,11 @@ class App extends React.Component {
     this.openAbout = this.openAbout.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
-    this.showExplanation = this.checkAnswer.bind(this);
+    this.showExplanation = this.showExplanation.bind(this);
+    this.nextQuestion = this.nextQuestion.bind(this);
     this.getModal = this.getModal.bind(this);
+    this.getQuestion = this.getQuestion.bind(this);
+  }
 
   getQuestion() {
     return questions[Math.floor(Math.random() * questions.length)];
@@ -32,6 +35,10 @@ class App extends React.Component {
     this.setState({ view: "about" });
   }
 
+  showExplanation() {
+    this.setState({ view: "explanation" });
+  }
+
   checkAnswer(str) {
     if (str === this.state.question.correct) {
       return () => this.setState({ view: "correct" });
@@ -40,12 +47,12 @@ class App extends React.Component {
     }
   }
 
-  showExplanation() {
-    this.setState({ view: "explanation" });
+  nextQuestion() {
+    this.setState({ question: this.getQuestion(), view: "main" });
   }
 
-  getModal() {
-    switch (this.state.view) {
+  getModal(view) {
+    switch (view) {
       case "correct":
         return (
           <Modal
@@ -53,6 +60,16 @@ class App extends React.Component {
             content={correct_content}
             closeHandler={this.closeModal}
             explanationHandler={this.showExplanation}
+            nextHandler={this.nextQuestion}
+          />
+        );
+      case "explanation":
+        return (
+          <Modal
+            type="explanation"
+            content={this.state.question.explanation}
+            closeHandler={this.closeModal}
+            nextHandler={this.nextQuestion}
           />
         );
       case "incorrect":
@@ -62,6 +79,7 @@ class App extends React.Component {
             content={incorrect_content}
             closeHandler={this.closeModal}
             explanationHandler={this.showExplanation}
+            nextHandler={this.nextQuestion}
           />
         );
       case "about":
@@ -69,14 +87,6 @@ class App extends React.Component {
           <Modal
             type="about"
             content={about_content}
-            closeHandler={this.closeModal}
-          />
-        );
-      case "explanation":
-        return (
-          <Modal
-            type="explanation"
-            content={this.state.question.explanation}
             closeHandler={this.closeModal}
           />
         );
@@ -105,7 +115,7 @@ class App extends React.Component {
             {"No, seriously, what is this?"}
           </button>
         </footer>
-        {this.getModal()}
+        {this.getModal(this.state.view)}
       </div>
     );
   }
