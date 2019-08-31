@@ -9,6 +9,7 @@ class Modal extends React.Component {
     this.content = props.content;
     this.closeModal = props.closeHandler;
     this.explanationHandler = props.explanationHandler;
+    this.nextHandler = props.nextHandler;
     this.buttons = this.buttons.bind(this);
   }
 
@@ -17,14 +18,17 @@ class Modal extends React.Component {
       case "answer":
         return (
           <div className="modal__options">
-            <ModalButton type="explanation" onClick={this.explanationHandler} />
-            <ModalButton type="next" />
+            <ModalButton
+              type="explanation"
+              clickHandler={this.explanationHandler}
+            />
+            <ModalButton type="next" clickHandler={this.nextHandler} />
           </div>
         );
       case "explanation":
         return (
           <div className="modal__options">
-            <ModalButton type="next" />
+            <ModalButton type="next" clickHandler={this.nextHandler} />
           </div>
         );
       default:
