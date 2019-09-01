@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const about_content = (
+const aboutContent = (
   <div>
     <h1>An educational game for beginning JS developers</h1>
     <p>
@@ -11,47 +11,61 @@ const about_content = (
     </p>
     <p>
       One thing that has not changed, however, is javascript's implementation of
-      the <code>this</code> keyword that seemingly differs from how most other
-      languages have implemented it. To say that <code>this</code>
+      the
+      {' '}
+      <code>this</code>
+      {' '}
+keyword that seemingly differs from how most other
+      languages have implemented it. To say that
+      {' '}
+      <code>this</code>
       <a
         href="https://codeburst.io/all-about-this-and-new-keywords-in-javascript-38039f71780c"
         target="_blank"
         rel="noopener noreferrer"
       >
-        {" "}
-        is a{" "}
+        {' '}
+        is a
+        {' '}
       </a>
       <a
         href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this"
         target="_blank"
         rel="noopener noreferrer"
       >
-        {" "}
-        stumbling block{" "}
+        {' '}
+        stumbling block
+        {' '}
       </a>
       <a
         href="https://stackoverflow.com/questions/3127429/how-does-the-this-keyword-work"
         target="_blank"
         rel="noopener noreferrer"
       >
-        {" "}
-        for many{" "}
+        {' '}
+        for many
+        {' '}
       </a>
       <a
         href="https://dmitripavlutin.com/gentle-explanation-of-this-in-javascript/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        {" "}
-        javascript beginners{" "}
+        {' '}
+        javascript beginners
+        {' '}
       </a>
       would be an understatement.
     </p>
 
     <p>
-      {" "}
+      {' '}
       This page will not go into a detailed explanation of the inner workings of
-      the <code>this</code> keyword. There's plenty of those to be found online
+      the
+      {' '}
+      <code>this</code>
+      {' '}
+keyword. There's plenty of those to be found online
       (I list some references at the bottom). Instead, I will try to give a
       short explanation with every code example of what exactly is happening.
     </p>
@@ -63,9 +77,10 @@ const about_content = (
         target="_blank"
         rel="noopener noreferrer"
       >
-        {" "}
+        {' '}
         Syntax podcast
-      </a>{" "}
+      </a>
+      {' '}
       on javascript fundamentals. I highly recommend the podcast to anyone
       starting out in front end development!
     </p>
@@ -92,7 +107,11 @@ const about_content = (
         </a>
       </dt>
       <dd>
-        This article explains the mechanics of <code>this</code> in the wider
+        This article explains the mechanics of
+        {' '}
+        <code>this</code>
+        {' '}
+in the wider
         context of javascript scoping.
       </dd>
       <dt>
@@ -101,7 +120,11 @@ const about_content = (
           target="_blank"
           rel="noopener noreferrer"
         >
-          Gentle explanation of <code>this</code> keyword in javascript
+          Gentle explanation of
+          {' '}
+          <code>this</code>
+          {' '}
+keyword in javascript
         </a>
       </dt>
       <dd>A long but excellent and detailed description by Dmitri Pavlutin.</dd>
@@ -109,18 +132,18 @@ const about_content = (
   </div>
 );
 
-const correct_content = (
+const correctContent = (
   <div>
     <h1>Correct!</h1>
     <p>You seem to be getting a hang of it. Or was it just a fluke?</p>
   </div>
 );
 
-const incorrect_content = (
+const incorrectContent = (
   <div>
     <h1>Wrong!</h1>
-    <p> Looks like you're still unclear about some things.</p>
+    <p> Looks like you&apos;re still unclear about some things.</p>
   </div>
 );
 
-export { about_content, correct_content, incorrect_content };
+export { aboutContent, correctContent, incorrectContent };

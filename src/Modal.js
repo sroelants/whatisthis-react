@@ -1,6 +1,7 @@
-import React from "react";
-import ModalButton from "./ModalButton";
-import "./Modal.sass";
+import React from 'react';
+import Prism from 'prismjs';
+import ModalButton from './ModalButton';
+import './Modal.sass';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class Modal extends React.Component {
 
   buttons(context) {
     switch (context) {
-      case "answer":
+      case 'answer':
         return (
           <div className="modal__options">
             <ModalButton
@@ -25,7 +26,7 @@ class Modal extends React.Component {
             <ModalButton type="next" clickHandler={this.nextHandler} />
           </div>
         );
-      case "explanation":
+      case 'explanation':
         return (
           <div className="modal__options">
             <ModalButton type="next" clickHandler={this.nextHandler} />
@@ -34,6 +35,10 @@ class Modal extends React.Component {
       default:
         return null;
     }
+  }
+
+  componentDidMount() {
+    Prism.highlightAll();
   }
 
   render() {

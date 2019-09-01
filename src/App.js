@@ -1,17 +1,26 @@
-import React from "react";
-import CodeField from "./CodeField";
-import ButtonPanel from "./ButtonPanel";
-import Modal from "./Modal";
-import questions from "./questions";
-import { about_content, correct_content, incorrect_content } from "./content";
-import "./App.sass";
+import React from 'react';
+import CodeField from './CodeField';
+import ButtonPanel from './ButtonPanel';
+import Modal from './Modal';
+import questions from './questions';
+import { aboutContent, correctContent, incorrectContent } from './content';
+import './App.sass';
+
+function getQuestion() {
+  return questions[Math.floor(Math.random() * questions.length)];
+}
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const question = getQuestion();
+
     this.state = {
-      view: "main",
-      question: this.getQuestion()
+      view: 'main',
+      codesnippet: question.codesnippet,
+      options: question.options,
+      correct: question.correct,
+      explanation: question.explanation,
     };
 
     this.openAbout = this.openAbout.bind(this);
@@ -20,74 +29,49 @@ class App extends React.Component {
     this.showExplanation = this.showExplanation.bind(this);
     this.nextQuestion = this.nextQuestion.bind(this);
     this.getModal = this.getModal.bind(this);
-    this.getQuestion = this.getQuestion.bind(this);
   }
 
-  getQuestion() {
-    return questions[Math.floor(Math.random() * questions.length)];
-  }
-
-  closeModal() {
-    this.setState({ view: "main" });
-  }
-
-  openAbout() {
-    this.setState({ view: "about" });
-  }
-
-  showExplanation() {
-    this.setState({ view: "explanation" });
-  }
-
-  checkAnswer(str) {
-    if (str === this.state.question.correct) {
-      return () => this.setState({ view: "correct" });
-    } else {
-      return () => this.setState({ view: "incorrect" });
-    }
-  }
-
-  nextQuestion() {
-    let question = this.getQuestion();
-    this.setState({ question: question, view: "main" });
-  }
-
-  getModal() {
-    switch (this.state.view) {
-      case "correct":
+  getModal(view) {
+    const { explanation } = this.state;
+    switch (view) {
+      case 'correct':
         return (
           <Modal
             type="answer"
-            content={correct_content}
+            content={correctContent}
             closeHandler={this.closeModal}
             explanationHandler={this.showExplanation}
             nextHandler={this.nextQuestion}
           />
         );
-      case "explanation":
+      case 'incorrect':
+        return (
+          <Modal
+            type="answer"
+            content={incorrectContent}
+            closeHandler={this.closeModal}
+            explanationHandler={this.showExplanation}
+            nextHandler={this.nextQuestion}
+          />
+        );
+      case 'explanation':
+        // We pass the 'view' as a key to the explanation modal. This is
+        // a complete hack, but by changing the key of the modal, we forcefully
+        // trigger an update.
         return (
           <Modal
             type="explanation"
-            content={this.state.question.explanation}
+            content={explanation}
             closeHandler={this.closeModal}
             nextHandler={this.nextQuestion}
+            key={view}
           />
         );
-      case "incorrect":
-        return (
-          <Modal
-            type="answer"
-            content={incorrect_content}
-            closeHandler={this.closeModal}
-            explanationHandler={this.showExplanation}
-            nextHandler={this.nextQuestion}
-          />
-        );
-      case "about":
+      case 'about':
         return (
           <Modal
             type="about"
-            content={about_content}
+            content={aboutContent}
             closeHandler={this.closeModal}
           />
         );
@@ -96,27 +80,66 @@ class App extends React.Component {
     }
   }
 
+  nextQuestion() {
+    const {
+      codesnippet, options, correct, explanation,
+    } = getQuestion();
+    this.setState({
+      view: 'main',
+      codesnippet,
+      options,
+      correct,
+      explanation,
+    });
+  }
+
+  checkAnswer(str) {
+    const { correct } = this.state;
+    if (str === correct) {
+      return () => this.setState({ view: 'correct' });
+    }
+    return () => this.setState({ view: 'incorrect' });
+  }
+
+  showExplanation() {
+    this.setState({ view: 'explanation' });
+    this.forceUpdate();
+  }
+
+  openAbout() {
+    this.setState({ view: 'about' });
+  }
+
+  closeModal() {
+    this.setState({ view: 'main' });
+  }
+
   render() {
+    const { view, options, codesnippet } = this.state;
+    // We pass the 'codesnippet' as a key to the CodeField. This is
+    // a complete hack, but by changing the key of the modal, we forcefully
+    // trigger an update.
     return (
       <div className="App">
         <header>
-          {"What is "}
-          <span className="header__this">{"this"}</span>
-          {"?"}
+          {'What is '}
+          <span className="header__this">this</span>
+          {'?'}
         </header>
         <main>
-          <CodeField content={this.state.question.codesnippet} />
-          <ButtonPanel
-            options={this.state.question.options}
-            answerHandler={this.checkAnswer}
-          />
+          <CodeField key={codesnippet} content={codesnippet} />
+          <ButtonPanel options={options} answerHandler={this.checkAnswer} />
         </main>
         <footer>
-          <button className="footer__about" onClick={this.openAbout}>
-            {"No, seriously, what is this?"}
+          <button
+            type="button"
+            className="footer__about"
+            onClick={this.openAbout}
+          >
+            {'No, seriously, what is this?'}
           </button>
         </footer>
-        {this.getModal()}
+        {this.getModal(view)}
       </div>
     );
   }

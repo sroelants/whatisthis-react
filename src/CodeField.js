@@ -1,9 +1,9 @@
-import React from "react";
-import Prism from "prismjs";
-import "./prism-monokai.css";
-import "./CodeField.sass";
+import React from 'react';
+import Prism from 'prismjs';
+import './prism-monokai.css';
+import './CodeField.sass';
 
-class CodeField extends React.Component {
+class CodeField extends React.PureComponent {
   constructor(props) {
     super(props);
     this.content = props.content;
